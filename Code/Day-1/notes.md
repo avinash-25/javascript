@@ -1,7 +1,3 @@
-Here’s your **JavaScript Class 1 Notes** fully corrected, structured, and formatted in Markdown, ready to be pasted into a `notes.md` file:
-
----
-
 # JavaScript Class 1 Notes
 
 ## 1. History of JavaScript
