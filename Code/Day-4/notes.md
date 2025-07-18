@@ -269,3 +269,8 @@ const bigNum = 12345678901234567890n;
 console.log(bigNum + 1n);
 ```
 ---
+
+### Symbol 
+
+- let a = 10;
+- let b = Symbol(a === 10);

@@ -1,0 +1,40 @@
+body {
+  font-family: sans-serif;
+  padding: 30px;
+  background: #45acad;
+background: linear-gradient(241deg, rgba(69, 172, 173, 1) 0%, rgba(253, 187, 45, 1) 100%);
+}
+
+h1 {
+  text-align: center;
+}
+
+div {
+  margin-bottom: 30px;
+  background: lightcyan;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+img{
+    height: 40px;
+    width: 60px;
+}
+
+button{
+    color: blue;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: bisque;
+}
+
+button:hover{
+    background-color: #45acad;
+}
