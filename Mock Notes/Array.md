@@ -21,6 +21,8 @@
 - **Block of memory** used to store multiple values of different types
 - Elements are **ordered** and **indexed** starting from 0
 
+<br><br>
+
 ### Example
 ```javascript
 const arr = [12, 10n, true, 'abc', null, undefined];
@@ -46,6 +48,8 @@ Length: 4
 ```
 
 ---
+
+<br><br><br><br><br>
 
 ## Ways to Create Arrays
 
@@ -156,6 +160,8 @@ arr.splice(1, 2, 'NEW');
 console.log(arr); // ['a', 'NEW', 'd', 'e']
 ```
 
+<br><br><br><br><br><br><br>
+
 #### 6. **reverse()** - Reverse Array
 Reverses array in place and returns reference to same array.
 
@@ -238,6 +244,8 @@ console.log(numbers.indexOf(2, 2)); // 3 - start search from index 2
 
 ---
 
+<br><br>
+
 ### Higher-Order Methods (Accept Callback Functions)
 
 #### 11. **forEach()*** - Iterate Elements
@@ -268,6 +276,8 @@ console.log(result); // undefined - forEach always returns undefined
 - **Cannot be stopped** in middle (no break/continue)
 - **Not visible in call stack** (built-in method)
 - **Syntax:** `forEach(callback, thisArg)`
+
+<br><br><br><br><br><br>
 
 #### 12. **map()*** - Transform Elements
 Creates new array with results of calling function on every element.
@@ -355,7 +365,6 @@ console.log(words); // ['Hello', 'world', 'How', 'are', 'you']
 const wordsManual = sentences.map(sentence => sentence.split(' ')).flat();
 ```
 
----
 
 ### Search Methods
 
@@ -436,6 +445,8 @@ const hasAdult = users.some(user => user.age >= 18);
 console.log(hasAdult); // true (Bob is 25)
 ```
 
+<br><br><br><br>
+
 #### 24. **every()*** - Test All Elements
 Returns true if all elements pass test.
 
@@ -474,6 +485,8 @@ console.log(allInStock); // false (Tablet is out of stock)
 - `slice()`, `includes()`, `indexOf()`
 - All higher-order methods: `map()`, `filter()`, `reduce()`, etc.
 
+<br>
+
 ### Performance Considerations
 
 | Method Type | Time Complexity | Best Use Case |
@@ -508,6 +521,8 @@ console.log(arr instanceof Array);      // true
 console.log(Object.prototype.toString.call(arr)); // '[object Array]'
 ```
 
+<br><br>
+
 ### 3. Method Chaining
 ```javascript
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -532,6 +547,8 @@ console.log(!arr.length);             // true
 
 ---
 
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 ## Quick Reference Table
 
 | Method | Mutates | Returns | Use Case |
@@ -553,4 +570,6 @@ console.log(!arr.length);             // true
 | `some()` | ❌ | Boolean | Test any |
 | `every()` | ❌ | Boolean | Test all |
 
-This comprehensive guide covers all JavaScript array fundamentals and methods with practical examples and best practices for effective array manipulation.
+<br><br>
+
+---
