@@ -44,24 +44,35 @@
 
 
 // first
-const obj = {username: "Avinash"};
+// const obj = {username: "Avinash"};
 
-// second
+// // second
 
-const obj2 = new Object(12); // number.
-const ob3 = new Object('av'); // string
-const ob4 = new Object({}); // object
-console.log(obj2);
+// const obj2 = new Object(12); // number.
+// const ob3 = new Object('av'); // string
+// const ob4 = new Object({}); // object
+// console.log(obj2);
 
 
 
-// 3
+// // 3
 
-function CreateObject (username, age , city){
-    this.username = username;
-    this.age = age;
-    this.city = city;
+// function CreateObject (username, age , city){
+//     this.username = username;
+//     this.age = age;
+//     this.city = city;
+// }
+
+// const u1 = new CreateObject("Avinash", 22, "Muzaffarpur");
+
+
+class car{
+    constructor(name, price, color){
+        this.carname = name;
+        this.price = price;
+        this.color = color;
+    }
 }
 
-const u1 = new CreateObject("Avinash", 22, "Muzaffarpur");
-
+const c1 = new car("Rolls Royce", 20000000, "beige")
+console.log(c1);

@@ -11,6 +11,8 @@
 * The **Netscape Navigator** browser became very popular, and JavaScript started gaining attention.
 * Meanwhile, **Microsoft** copied around 70% of JavaScript’s features and added 30% of their own. They named it **JScript** and launched it with their own browser called **Internet Explorer** in **1995** (the world’s third browser).
 
+<br><br><br>
+
 ### 🧠 Summary Diagram
 
 ```plaintext
@@ -35,10 +37,15 @@ Microsoft (Competitor)
 
 * Initially created to enhance interactivity within the browser (client-side scripting).
 * Became the **standard scripting language for browsers**.
-* Later standardized by **ECMA International** in 1997 (as ECMAScript).
+* Later standardized by **ECMA(European Computer Manufacturer Association) International** in 1997 (as ECMAScript).
 * Evolved to be used both on **frontend** and **backend** (via Node.js).
+* **ES-1** came in 1997.
+* **ES-5** came in 2009 with (var, function are came in this version)
+* **ES-6** came in 2015 with (class, Arrow function came in this version)
 
 ---
+
+<br><br><br>
 
 ## ✅ 3. How JavaScript Became Popular
 
@@ -64,6 +71,8 @@ Microsoft (Competitor)
   * Use **Live Server extension** to see the output dynamically in a browser.
 
 ---
+
+<br>
 
 ##  5. `defer` vs `async` in `<script>` Tag
 

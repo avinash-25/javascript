@@ -26,15 +26,17 @@ When `script.js` is connected to `index.html` and opened in a browser, it runs u
 ```                                     
 
 
+<br><br><br><br>
+
 ### 2. Web APIs (provided by Browser)
 
-* DOM
-* EVENT
-* setTimeout
-* setInterval
-* PROMISE
-* fetch()
-* navigator
+|             |            |            |
+|-------------|------------|------------|
+| setInterval | PROMISE    | fetch()    |
+| navigator   | DOM        |   EVENT    |
+| setTimeout  |            |            |
+
+<br>
 
 ### 3. Storage APIs
 
@@ -43,6 +45,9 @@ When `script.js` is connected to `index.html` and opened in a browser, it runs u
 * IndexedDB
 * Cookies
 * Cache
+* WebSQL
+
+<br>
 
 ### 4. JavaScript Engine Components
 
@@ -55,8 +60,9 @@ When `script.js` is connected to `index.html` and opened in a browser, it runs u
 * Call Stack – Executes and manages function calls (LIFO).
 * Heap Memory – Allocates memory for objects.
 
-<br><br><br><br>
-<br>
+
+
+
 
 ### 5. Event Loop
 
@@ -97,20 +103,160 @@ Execution Order:
 3. Macrotasks (e.g., setTimeout after 2s).
 
 ---
-<br><br>
-## Browser JS Engines
 
-| Browser         | JavaScript Engine |
-| --------------- | ----------------- |
-| Google Chrome   | V8                |
-| Mozilla Firefox | Spider Monkey     |
-| Safari          | JavaScriptCore    |
-| MS Edge         | Chakra            |
-| Brave           | V8                |
+* If a browser has a JS Engine, it becomes a **JRE[Javascript runtime enviroment]**.
+  
 
-* If a browser has a JS Engine, it becomes a **JRE**.
+
+## JavaScript Execution Model (Synchronous vs Asynchronous)
+
+### ✅ **Synchronous Code:**
+* All regular JavaScript code (like variable declarations, loops, functions, console logs, etc.) is executed **line-by-line**, one after the other.
+* This code goes into the **Call Stack**, which is managed by the **JavaScript Engine** (e.g., V8 in Chrome, SpiderMonkey in Firefox).
+* Synchronous code is **blocking**, meaning each statement waits for the previous one to finish.
+
+**Example:**
+
+```javascript
+console.log("Start");
+console.log("End");
+```
+
+**Output:**
+
+```
+Start
+End
+```
+
+### **Asynchronous Code (setTimeout, Promises, Events):**
+
+#### 🔹 `setTimeout()` and similar Web APIs:
+* When you use `setTimeout()`, the timer is handled **outside the JS engine** by the **Browser's Web API environment**.
+* After the timer completes, the callback function is pushed into the **MACROTASK queue**.
+* It waits there until the **Call Stack is empty**, and then the **Event Loop** pushes it to be executed.
+
+#### 🔸 Example:
+
+```javascript
+console.log("Start");
+setTimeout(() => {
+  console.log("Inside setTimeout");
+}, 1000);
+console.log("End");
+```
+
+**Output:**
+
+```
+Start
+End
+Inside setTimeout
+```
+
+#### ✅ Here:
+* `"Start"` and `"End"` run first (synchronously).
+* `"Inside setTimeout"` runs after 1 second, once the call stack is clear.
+
+### 🧵 TASK QUEUES:
+
+#### 1. **Microtask Queue**
+* Contains: `Promise` callbacks, `queueMicrotask()`, `MutationObserver`
+* Higher priority than macrotask.
+
+<br><br><br>
+
+#### 2. **Macrotask Queue**
+* Contains: `setTimeout`, `setInterval`, `setImmediate`, `MessageChannel`, `UI rendering`, etc.
+
+📌 The **Event Loop** constantly checks if the **Call Stack is empty**, and then pushes tasks from the microtask queue first, followed by the macrotask queue.
+
+### 🔄 Summary:
+
+| Code Type | Where it goes | Type | Priority |
+|-----------|---------------|------|----------|
+| Regular JS Code | Call Stack | Synchronous | High |
+| `setTimeout()` Callback | Macrotask Queue via Web API | Asynchronous | Low |
+| `Promise.then()` | Microtask Queue | Asynchronous | Higher |
+
+
+## Rendering in JavaScript Engines
+
+### Overview
+Rendering in JavaScript engines refers to the process of converting JavaScript code and web content into visual output that users can see and interact with in their browsers. However, JavaScript engines themselves don't actually handle rendering - they work closely with rendering engines.
+
+### JavaScript Engine vs Rendering Engine
+
+### JavaScript Engines
+JavaScript engines (V8, SpiderMonkey, JavaScriptCore) are responsible for:
+- Parsing and executing JavaScript code
+- Memory management
+- Garbage collection
+- Just-in-time compilation
+
+### Rendering Engines
+Rendering engines (Blink, Gecko, WebKit) handle:
+- Parsing HTML and CSS
+- Building the DOM (Document Object Model) and CSSOM (CSS Object Model)
+- Layout calculations
+- Painting pixels to the screen
+
+### How They Work Together
+
+The rendering process involves several key steps where JavaScript and rendering engines collaborate:
+
+1. **DOM Manipulation**
+   - JavaScript can modify the DOM structure
+   - Add/remove elements
+   - Change attributes
+
+2. **Style Changes**
+   - JavaScript can modify CSS properties
+   - Change classes
+   - Modify inline styles
+
+<br>
+
+3. **Layout Recalculation**
+   - When JavaScript changes affect element dimensions or positions
+   - The rendering engine recalculates layout
+
+4. **Repainting**
+   - Visual changes trigger the rendering engine to repaint affected areas
+
+5. **Compositing**
+   - Modern browsers use GPU acceleration to composite layers efficiently
+
+### Performance Considerations
+
+Understanding this relationship is crucial for performance because:
+
+- **Expensive Operations**: Frequent DOM manipulations can trigger expensive layout recalculations
+- **CSS Properties**: Certain CSS properties are cheaper to animate than others
+- **Event Loop**: The browser's event loop coordinates between JavaScript execution and rendering
+- **Synchronization**: Techniques like `requestAnimationFrame` help synchronize JavaScript with the browser's refresh rate
+
+<br>
+
+### Key Insight
+
+While JavaScript engines execute the logic, they rely on separate rendering engines to actually display the results on screen. The collaboration between these two components is what makes modern web applications possible.
+
+
+
+### Browser Examples
+
+| Browser | JavaScript Engine | Rendering Engine |
+|---------|-------------------|------------------|
+| Chrome | V8 | Blink |
+| Firefox | SpiderMonkey | Gecko |
+| Safari | JavaScriptCore | WebKit |
+| Edge | Previously use **'chakra'**<br>Now use **'V8'** | Blink |
+| Mozilla Firefox | Spider monkey | Gecko
 
 ---
+
+<br>
 
 ## Node.js Evolution Year-Wise
 
@@ -151,10 +297,10 @@ Execution Order:
   * **Node.js Foundation** established.
   * Merged **Node.js + IO.js** under this foundation.
 * Started regular releases.
-* Introduced **LTS (Long Term Support)**:
+* Introduced **LTS (Long Term Support)** in 2016:
 
   * Valid for **30 months / 2.5 years**.
-* JS Frontend ecosystem evolved:
+* JS Frontend ecosystem evolved from 2015:
 
   * ES6
   * Frameworks: **React**, **Angular**, **Vue**
@@ -171,12 +317,14 @@ Execution Order:
 * **JS Foundation + Node.js Foundation** merged.
 * New body formed: **OpenJS Foundation**.
 
+<br>
+
 ### **2020**
 
 * **Ryan Dahl** returned.
-* Introduced **Deno** as a **secure competitor to Node.js**.
+* Introduced **Deno.js** as a **secure competitor to Node.js**.
 
-| Feature     | Node.js | Deno                                |
+| Feature     | Node.js | Deno.js                                |
 | ----------- | ------- | ----------------------------------- |
 | Uses npm    | Yes     | No                                  |
 | Package Mgr | npm     | Built-in (No installation required) |
