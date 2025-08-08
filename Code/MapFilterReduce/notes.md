@@ -13,6 +13,9 @@
 ## forEach
 
 ### Overview
+
+- It is higher order function.
+- It is used to iterate over array elements and index.
 - `forEach` executes a provided function once for each array element
 - **Does NOT return anything** (returns `undefined`)
 - Cannot be stopped in the middle (no `break` or `return` to exit early)
@@ -72,11 +75,15 @@ const obj = {
 
 ---
 
+
+
 ## map
 
 ### Overview
 - **Always returns a new array** with the same length as the original
-- Does not mutate the original array
+- It is higher order function.
+- It returns new array.
+- It will modify the original array.
 - Each element is transformed by the callback function
 - Cannot be stopped in the middle by default
 
@@ -84,6 +91,8 @@ const obj = {
 ```javascript
 const newArray = array.map(callback(element, index, array), thisArg)
 ```
+
+<br><br><br><br><br><br><br>
 
 ### Key Concepts
 
@@ -145,12 +154,16 @@ console.log(result); // [1, 8, 27, 64, 125]
 - Creates a **new array** with elements that pass a test
 - The callback function must return a **truthy or falsy value**
 - Falsy values are automatically converted to `false`
-- Original array remains unchanged
+- It will modify the original array.
+- It is higher order function.
+- It is used to iterate over array.
 
 ### Syntax
 ```javascript
 const newArray = array.filter(callback(element, index, array), thisArg)
 ```
+
+<br><br><br><br>
 
 ### Key Concepts
 
@@ -218,6 +231,8 @@ const result = arr
 console.log(result); // [36, 64, 100]
 ```
 
+<br><br><br><br><br><br><br>
+
 #### 2. Complex Chaining
 ```javascript
 const products = [
@@ -246,6 +261,11 @@ console.log(expensiveElectronics);
 - **Most powerful array method** - can return anything (number, string, array, object)
 - Reduces an array to a single value through accumulation
 - Has an accumulator that carries the result through each iteration
+- It is higher order function.
+- It is used to iterate and conclude result to a single value.
+- It returns single value.
+
+<br><br><br>
 
 ### Syntax
 ```javascript
@@ -279,6 +299,8 @@ const filtered = arr.reduce((accumulator, element) => {
 
 console.log(filtered); // [10, 20, 30]
 ```
+
+<br><br><br><br>
 
 #### 3. Building Objects
 ```javascript
@@ -318,6 +340,8 @@ Final Result: 15
 
 ---
 
+<br><br><br>
+
 ## reduceRight
 
 ### Overview
@@ -347,6 +371,8 @@ const rightReduced = arr.reduceRight((acc, element, index) => {
 
 console.log(rightReduced); // 15
 ```
+
+<br><br><br><br><br>
 
 ### Practical Use Case - String Reversal
 ```javascript
@@ -411,6 +437,8 @@ console.log(arr.flat()); // [1, 2, 4, 5] - removes empty slots
 | reduce | O(n) | O(1) |
 | flat | O(n) | O(n) |
 
+<br><br><br><br>
+
 ### Best Practices
 
 #### 1. Choose the Right Method
@@ -441,6 +469,8 @@ const result2 = largeArray
     .filter((name, index) => largeArray[index].active);
 ```
 
+<br><br><br><br><br><br><br><br><br><br><br>
+
 ### Summary Table
 
 | Method | Returns | Mutates Original | Use Case |
@@ -469,6 +499,8 @@ const count = fruits.reduce((acc, fruit) => {
 
 console.log(count); // {apple: 3, banana: 2, cherry: 1}
 ```
+
+<br><br><br>
 
 ### 2. Group by Property
 ```javascript
@@ -502,3 +534,9 @@ const uniqueReduce = arr.reduce((acc, item) => {
     return acc;
 }, []);
 ```
+
+---
+Happy Ending..!!
+<br><br>
+
+***Avinash Ranjan*** 
