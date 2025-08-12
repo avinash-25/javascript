@@ -1,4 +1,4 @@
-# JavaScript Destructuring - Complete Notes
+# JavaScript Destructuring
 
 ## Table of Contents
 1. [Introduction to Destructuring](#introduction)
@@ -17,6 +17,11 @@
 
 **Destructuring** is a JavaScript feature that allows you to extract values from arrays or properties from objects and assign them to variables in a single statement. It provides a clean and concise way to unpack values, making code more readable and efficient.
 
+- The process of extracting the values from the array or object into the variables is known as destructuring.
+- The two most used data structures in JavaScript are Object and Array, both allows us to unpack individual values into variables.
+
+<br>
+
 ### Why Use Destructuring?
 - **Cleaner Code**: Reduces the need for repetitive property access
 - **Improved Readability**: Makes variable assignments more explicit
@@ -27,14 +32,22 @@
 
 ## Object Destructuring
 
-Object destructuring allows you to extract properties from objects and assign them to variables with matching names.
+- The process of extracting the values from the object into the variables is known as object destructuring.
+- All the key names provided on LHS are consider as variable and these variables should be declared and written inside curly braces.
+- The variable name should same as object key name
+- Js engine will search for the key inside the object.
+- If the key is present, the value is extracted and copy into variable.
+- If the key is not present, undefined is store in the variable.
+- After destructuring, we can directly access variable names, without using object reference.
 
 ### Basic Syntax
 ```javascript
 const {property1, property2} = object;
 ```
 
-### Example from Class
+<br><br><br><br>
+
+### Example :- 
 ```javascript
 const obj = {
     username: "Avinash",
@@ -63,18 +76,18 @@ const obj = {
     username: "Avinash",
     age: 24
 }
-
 const {username: name, age: userAge} = obj;
 console.log(name);    // "Avinash"
 console.log(userAge); // 24
 ```
+
+<br><br>
 
 #### Default Values
 ```javascript
 const obj = {
     username: "Avinash"
 }
-
 const {username, age = 25, city = "Delhi"} = obj;
 console.log(username); // "Avinash"
 console.log(age);      // 25 (default value)
@@ -85,20 +98,20 @@ console.log(city);     // "Delhi" (default value)
 
 ## Array Destructuring.
 
-Array destructuring assigns array elements to variables based on their position.
+- The process of extracting the values from the array into the variables is known as array destructuring.
+- All the key names provided on LHS are consider as variable and should be written inside square brackets.
+- Js engine will extract the array values and stored them variables in the same order as they are present inside array.
+- if we try to access value which is not present inside array, js engine will store undefined inside that variable.
 
 ### Basic Syntax
+
 ```javascript
 const [variable1, variable2] = array;
 ```
-
-<br>
-
 ### Example from Class
 ```javascript
 const movies = ["welcome", "housefull", "dhammal"];
 const [m1, , m3] = movies; // Note: empty space skips second element
-
 console.log(m1); // "welcome"
 console.log(m3); // "dhammal"
 ```
@@ -135,23 +148,19 @@ console.log(b); // 1
 
 Destructuring works with nested objects, allowing you to extract deeply nested properties.
 
+<br><br>
 
-
-### Example from Class
+### Example :
 ```javascript
 const obj = {
     username: "Avinash",
-    address: {
-        state: "UP",
-        pin: 201301
+    address: { state: "UP", pin: 201301
     }
 }
-
 // Method 1: Rename nested object
 const {username, address: add} = obj;
 console.log(username); // "Avinash"
 console.log(add);      // {state: "UP", pin: 201301}
-
 // Method 2: Extract nested properties directly
 const {username, address: {state, pin}} = obj;
 console.log(username); // "Avinash"
@@ -159,7 +168,6 @@ console.log(state);    // "UP"
 console.log(pin);      // 201301
 ```
 
-<br><br><br><br><br><br><br><br><br><br><br>
 
 ### Complex Nested Example
 ```javascript
@@ -167,13 +175,10 @@ const user = {
     name: "Avinash",
     contact: {
         email: "avinashranjan918@gmail.com",
-        phone: {
-            mobile: "+91 6204732828",
-            landline: "011-12345678"
+        phone: { mobile: "+91 6204732828", landline: "011-12345678"
         }
     }
 }
-
 const {
     name,
     contact: {
@@ -181,7 +186,6 @@ const {
         phone: {mobile, landline}
     }
 } = user;
-
 console.log(name);     // "Avinash"
 console.log(email);    // "avinashranjan918@gmail.com"
 console.log(mobile);   // "+91 6204732828"
@@ -190,8 +194,7 @@ console.log(landline); // "011-12345678"
 
 ---
 
-<br><br><br><br>
-<br><br><br><br><br><br><br><br>
+<br><br>
 
 ## Nested Array Destructuring
 
@@ -304,14 +307,36 @@ const x = users.map(({fname, lname}, index, array) => {
 
 ---
 
-<br><br><br><br>
+
+<br><br><br>
+
 
 ## Advanced Destructuring Techniques 
 
 ### Function Parameters Destructuring
+
+- We can destructure array or object in function parameter so that we can access value directly.
+- Destructuring object in function parameter At the time of object destructuring, we have to make sure variable name is same as object key name and write within curly braces.
+
+```javascript
+function details({name,age}) {
+console.log(name); // Avinash
+console.log(age); // 24
+}
+
+let obj = {
+name:"Avinash" ,
+age:24 ,
+}
+
+details(obj) // function call
+```
+
+
 ```javascript
 // Object parameters
 function greetUser({name, age, city = "Unknown"}) {
+
     console.log(`Hello ${name}, you are ${age} years old from ${city}`);
 }
 
@@ -319,10 +344,12 @@ greetUser({name: "Avinash", age: 24, city: "Noida"});
 
 // Array parameters
 function processCoordinates([x, y, z = 0]) {
+
     console.log(`X: ${x}, Y: ${y}, Z: ${z}`);
 }
 
 processCoordinates([10, 20]); // Z defaults to 0
+
 ```
 
 ### Computed Property Names
@@ -337,7 +364,7 @@ const {[key]: name, age} = obj;
 console.log(name); // "Avinash"
 ```
 
-<br><br><br><br><br><br><br>
+
 
 ### Dynamic Destructuring with Loops
 ```javascript
@@ -353,6 +380,8 @@ for (const {id, name, role} of users) {
 ```
 
 ---
+
+<br><br><br><br><br><br><br><br><br><br><br>
 
 ## Module Import/Export with Destructuring 
 
@@ -376,8 +405,6 @@ export {add, sub, greet, user};
 // }
 ```
 
-<br><br>
-
 ### Import with Destructuring
 ```javascript
 import {add, greet, user} from "./logic.js";
@@ -386,6 +413,8 @@ console.log(user);           // "Avinash"
 console.log(add(5, 3));      // 8
 console.log(greet("Tinku")); // "Good Morning Tinku"
 ```
+
+<br><br><br><br><br><br>
 
 ### Alternative Import Methods
 ```javascript
@@ -459,6 +488,8 @@ const {data, error} = await fetchUser(id);
 ```
 
 ---
+
+<br><br><br><br><br><br>
 
 ## Summary
 
