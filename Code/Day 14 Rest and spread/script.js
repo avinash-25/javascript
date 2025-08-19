@@ -23,6 +23,31 @@
 // console.log(obj);
 
 
-// Example 2
+
+import {user, employee} from "./main.js";
+import company from "./spread.js";
+import info from "./spread.js";
+import personal from "./sum.js";
+
+const { e1,...res} = employee;
+
+console.log(e1);
+console.log(res);
+// console.log(res);
 
 
+console.log(info);
+
+const username = {
+    name: "Avinash",
+    skills: ["react", "Node", " Express", " Mongo"],
+    ...personal,
+    ...company
+}
+
+// personal.maritalStatus = "married"; only here will be changed not changed permanently.
+
+console.log(personal);
+
+
+console.log(username);
