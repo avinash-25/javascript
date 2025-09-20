@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Examples - Event Delegation, Propagation & classList</title>
+    <link rel="stylesheet" href="eventPropogation, Delegation, classList.css">
+</head>
+<body class="light">
+    <!-- Header Section -->
+    <header class="header theme-target">
+        <div class="container">
+            <h1 class="title">JavaScript Examples Demo</h1>
+            <button class="theme-toggle light">🌙 Dark Mode</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Todo List Section -->
+            <section class="section">
+                <h2 class="section-title">1. Event Delegation - Todo List</h2>
+                <div class="todo-app theme-target">
+                    <div class="todo-input-container">
+                        <input type="text" class="todo-input" placeholder="Enter a new todo..." maxlength="100">
+                        <button class="add-todo-btn btn btn-primary">Add Todo</button>
+                    </div>
+                    <div class="todo-container">
+                        <!-- Dynamic todo items will be added here -->
+                        <div class="todo-item">
+                            <span class="todo-text">Sample Todo Item</span>
+                            <div class="todo-actions">
+                                <button class="complete-btn btn btn-success">✓</button>
+                                <button class="edit-btn btn btn-secondary">Edit</button>
+                                <button class="delete-btn btn btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Propagation Demo -->
+            <section class="section">
+                <h2 class="section-title">2. Event Propagation Demo</h2>
+                <p class="section-description">Click the inner box and check the console to see event propagation in action!</p>
+                <div class="propagation-demo">
+                    <div class="outer theme-target">
+                        <div class="middle theme-target">
+                            <div class="inner theme-target">
+                                Click Me!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="demo-button btn btn-primary">Multiple Listeners Demo</button>
+                <p class="demo-note">Check console for propagation order</p>
+            </section>
+
+            <!-- classList Methods Demo -->
+            <section class="section">
+                <h2 class="section-title">3. classList Methods Demo</h2>
+                <div class="classlist-demo">
+                    <div class="demo-element theme-target initial-class">
+                        Demo Element for classList Methods
+                    </div>
+                    <div class="demo-controls">
+                        <button onclick="demoBasicMethods()" class="btn btn-primary">Run Basic Methods</button>
+                        <button onclick="demoAdvancedMethods()" class="btn btn-secondary">Run Advanced Methods</button>
+                    </div>
+                    <div class="console-output">
+                        <h4>Console Output:</h4>
+                        <pre id="console-log"></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Copy Protection Demo -->
+            <section class="section">
+                <h2 class="section-title">4. Copy Protection Demo</h2>
+                <div class="copy-demo">
+                    <div class="protected-content theme-target">
+                        <h3>Protected Content</h3>
+                        <p>This content is protected from copying. Try to copy this text and see what happens!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="regular-content theme-target">
+                        <h3>Regular Content</h3>
+                        <p>This content can be copied normally. Feel free to select and copy this text.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Theme Demo Section -->
+            <section class="section">
+                <h2 class="section-title">5. Advanced Theme System</h2>
+                <div class="theme-demo theme-target">
+                    <div class="theme-showcase">
+                        <div class="card theme-target">
+                            <h3>Card Component</h3>
+                            <p>This card demonstrates the theme system in action.</p>
+                            <button class="btn btn-primary">Primary Button</button>
+                        </div>
+                        <div class="card theme-target">
+                            <h3>Another Card</h3>
+                            <p>All elements with 'theme-target' class get themed automatically.</p>
+                            <button class="btn btn-secondary">Secondary Button</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Examples -->
+            <section class="section">
+                <h2 class="section-title">6. Interactive Examples</h2>
+                <div class="interactive-examples">
+                    <div class="example-group">
+                        <h4>Dynamic Content Addition</h4>
+                        <button id="add-dynamic-btn" class="btn btn-primary">Add Dynamic Button</button>
+                        <div id="dynamic-container" class="dynamic-container theme-target">
+                            <!-- Dynamic buttons will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer theme-target">
+        <div class="container">
+            <p>&copy; 2024 JavaScript Examples Demo. Built for learning event delegation, propagation, and classList methods.</p>
+        </div>
+    </footer>
+
+    <!-- Notification Container -->
+    <div id="notification-container" class="notification-container"></div>
+
+    <!-- Scripts -->
+    <script src="eventPropogation, Delegation, classList.js"></script>
+    
+    <!-- Additional script for dynamic content demo -->
+    <script>
+        // Dynamic content addition demo
+        document.getElementById('add-dynamic-btn').addEventListener('click', function() {
+            const container = document.getElementById('dynamic-container');
+            const button = document.createElement('button');
+            button.className = 'btn btn-dynamic';
+            button.textContent = `Dynamic Button ${container.children.length + 1}`;
+            button.dataset.action = 'dynamic';
+            container.appendChild(button);
+        });
+
+        // Delegate clicks for dynamic buttons
+        document.getElementById('dynamic-container').addEventListener('click', function(e) {
+            if (e.target.matches('.btn-dynamic')) {
+                alert(`You clicked: ${e.target.textContent}`);
+                e.target.classList.toggle('clicked');
+            }
+        });
+
+        // Override console.log to show output in page
+        const originalLog = console.log;
+        const consoleOutput = document.getElementById('console-log');
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            if (consoleOutput) {
+                const message = args.map(arg => 
+                    typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+                ).join(' ');
+                consoleOutput.textContent += message + '\n';
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            }
+        };
+
+        // Clear console output function
+        function clearConsole() {
+            if (consoleOutput) {
+                consoleOutput.textContent = '';
+            }
+        }
+
+        // Add clear console button
+        document.addEventListener('DOMContentLoaded', function() {
+            const clearBtn = document.createElement('button');
+            clearBtn.textContent = 'Clear Console';
+            clearBtn.className = 'btn btn-small btn-secondary';
+            clearBtn.onclick = clearConsole;
+            clearBtn.style.marginLeft = '10px';
+            
+            const demoControls = document.querySelector('.demo-controls');
+            if (demoControls) {
+                demoControls.appendChild(clearBtn);
+            }
+        });
+    </script>
+</body>
+</html>

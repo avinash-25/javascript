@@ -1,0 +1,228 @@
+/* Custom CSS for Better Markdown PDF Output */
+
+/* Page Setup */
+@page {
+  margin: 10mm;
+  size: A4;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+  max-width: none;
+}
+
+/* Headings - Better Hierarchy */
+h1 {
+  font-size: 35px !important;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #b032aa;
+  color: #b032aa;
+  page-break-after: avoid;
+}
+
+h2 {
+  font-size: 28px !important;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  color: #2E75B6;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 25px !important;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  color: #4A90A4;
+  page-break-after: avoid;
+}
+
+h4 {
+  font-size: 20px !important;
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: #666;
+  page-break-after: avoid;
+}
+
+/* Code Blocks - Fixed Width and Overflow */
+pre {
+  background-color: #f8f9fa !important;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 16px !important;
+  margin: 15px 0;
+  overflow: auto;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 18px !important;
+  line-height: 1.4;
+  page-break-inside: avoid;
+  max-width: 100%;
+}
+
+pre code {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 15px !important;
+  color: #333 !important;
+  white-space: pre-wrap !important;
+  word-break: break-all;
+}
+
+/* Inline Code */
+code {
+  background-color: #f1f3f4;
+  border: 1px solid #e8eaed;
+  border-radius: 3px;
+  padding: 2px 4px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  color: #d73a49;
+}
+
+/* Tables */
+table {
+  width: 95%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  font-size: 15px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #6f42c1;
+  font-weight: 600;
+}
+
+/* Lists */
+ul, ol {
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+li {
+  margin-bottom: 5px;
+  line-height: 1.6;
+}
+
+/* Paragraphs */
+p {
+  margin: 10px 0;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #007ACC;
+  margin: 15px 0;
+  padding-left: 15px;
+  font-style: italic;
+  color: #666;
+}
+
+/* Links */
+a {
+  color: #007ACC;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Strong and Emphasis */
+strong {
+  font-weight: 600;
+  color: #333;
+}
+
+em {
+  font-style: italic;
+  color: #555;
+}
+
+/* Page Breaks */
+.page-break {
+  page-break-before: always;
+}
+
+/* Table of Contents */
+.toc {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.toc h2 {
+  margin-top: 0;
+  color: #007ACC;
+}
+
+/* Syntax Highlighting for Code */
+.hljs {
+  background: #f8f9fa !important;
+  color: #333 !important;
+}
+
+.hljs-comment {
+  color: #6a737d;
+}
+
+.hljs-string {
+  color: #032f62;
+}
+
+.hljs-keyword {
+  color: #d73a49;
+}
+
+.hljs-number {
+  color: #005cc5;
+}
+
+.hljs-function {
+  color: #6f42c1;
+}
+
+/* Fix for Long Lines in Code */
+.hljs code {
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+}
+
+/* Print Specific */
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  pre {
+    page-break-inside: avoid;
+    background-color: #f8f9fa !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+}

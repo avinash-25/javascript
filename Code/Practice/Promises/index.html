@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Promises Master Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Master JavaScript Promises</h1>
+        
+        <h2>📚 Step 1: Understanding Promise States</h2>
+        <div class="promise-states">
+            <div class="state pending">
+                <h3>⏳ Pending</h3>
+                <p>Promise is working...</p>
+            </div>
+            <div class="state fulfilled">
+                <h3>✅ Fulfilled</h3>
+                <p>Promise succeeded!</p>
+            </div>
+            <div class="state rejected">
+                <h3>❌ Rejected</h3>
+                <p>Promise failed!</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>🔧 Step 2: Creating Your First Promise</h2>
+            <div class="example">
+                <p><strong>Simple Promise that always succeeds:</strong></p>
+                <div class="code">const simplePromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Success! Promise completed!");
+    }, 2000);
+});
+
+// Using the promise
+simplePromise.then(result => {
+    console.log(result);
+});</div>
+                <button onclick="runSimplePromise()">Run Simple Promise</button>
+                <div id="output1" class="output">Click the button to see the result...</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>⚡ Step 3: Promise with Success and Error Handling</h2>
+            <div class="example">
+                <div class="code">const randomPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        const random = Math.random();
+        if (random > 0.5) {
+            resolve(`Success! Random number: ${random}`);
+        } else {
+            reject(`Failed! Random number too low: ${random}`);
+        }
+    }, 1000);
+});
+
+randomPromise
+    .then(result => console.log("✅", result))
+    .catch(error => console.log("❌", error));</div>
+                <button onclick="runRandomPromise()">Try Random Promise</button>
+                <div id="output2" class="output">Click to test success/failure...</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>🔄 Step 4: Chaining Promises</h2>
+            <div class="example">
+                <p><strong>Process data step by step:</strong></p>
+                <div class="code">function step1(data) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(data + " → Step 1 completed");
+        }, 1000);
+    });
+}
+
+function step2(data) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(data + " → Step 2 completed");
+        }, 1000);
+    });
+}
+
+// Chain them together
+Promise.resolve("Starting")
+    .then(step1)
+    .then(step2)
+    .then(result => console.log("Final result:", result));</div>
+                <button onclick="runChainedPromises()">Run Promise Chain</button>
+                <div id="output3" class="output">Watch the chain execute...</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>🚀 Step 5: Multiple Promises Together</h2>
+            <div class="example">
+                <p><strong>Promise.all() - Wait for all promises:</strong></p>
+                <div class="code">const promise1 = new Promise(resolve => setTimeout(() => resolve("Data 1"), 1000));
+const promise2 = new Promise(resolve => setTimeout(() => resolve("Data 2"), 2000));
+const promise3 = new Promise(resolve => setTimeout(() => resolve("Data 3"), 1500));
+
+Promise.all([promise1, promise2, promise3])
+    .then(results => {
+        console.log("All completed:", results);
+    });</div>
+                <button onclick="runPromiseAll()">Run Promise.all()</button>
+                <div id="output4" class="output">All promises will complete together...</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>⚡ Step 6: Real-World Example - Fake API Call</h2>
+            <div class="example">
+                <div class="code">function fetchUserData(userId) {
+    return new Promise((resolve, reject) => {
+        console.log(`Fetching user ${userId}...`);
+        
+        setTimeout(() => {
+            if (userId > 0) {
+                resolve({
+                    id: userId,
+                    name: `User ${userId}`,
+                    email: `user${userId}@example.com`
+                });
+            } else {
+                reject("Invalid user ID");
+            }
+        }, 1500);
+    });
+}
+
+// Usage
+fetchUserData(123)
+    .then(user => {
+        console.log("User found:", user);
+        return fetchUserData(456); // Chain another call
+    })
+    .then(user2 => {
+        console.log("Second user:", user2);
+    })
+    .catch(error => {
+        console.log("Error:", error);
+    });</div>
+                <button onclick="runFakeAPI()">Simulate API Calls</button>
+                <div id="output5" class="output">Simulating real API calls...</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>🎭 Step 7: Async/Await - The Modern Way</h2>
+            <div class="example">
+                <p><strong>Same logic, cleaner syntax:</strong></p>
+                <div class="code">async function getUsersModernWay() {
+    try {
+        console.log("Starting async function...");
+        
+        const user1 = await fetchUserData(789);
+        console.log("Got first user:", user1.name);
+        
+        const user2 = await fetchUserData(101);
+        console.log("Got second user:", user2.name);
+        
+        return "Both users loaded successfully!";
+    } catch (error) {
+        console.log("Something went wrong:", error);
+    }
+}
+
+getUsersModernWay()
+    .then(result => console.log("Final:", result));</div>
+                <button onclick="runAsyncAwait()">Run Async/Await</button>
+                <div id="output6" class="output">See the modern async/await syntax...</div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-top: 30px; text-align: center;">
+            <h2>🎯 You're Now a Promise Master!</h2>
+            <p>Key takeaways: Promises handle async operations, can be chained, and async/await makes them easier to read!</p>
+        </div>
+    </div>
+
+   <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+
+    <script src="script.js"></script>
+    
+</body>
+</html> -->

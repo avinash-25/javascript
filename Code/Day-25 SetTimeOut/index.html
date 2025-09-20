@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout() Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .demo-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #ffd700;
+        }
+        
+        .demo-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+        
+        .demo-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .console-output {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            text-align: left;
+            margin-top: 20px;
+            min-height: 60px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #333;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .countdown {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffd700;
+        }
+        
+        .loading {
+            background: rgba(0, 123, 255, 0.2);
+            color: #00bfff;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .pulsing {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🕐 setTimeout() Interactive Demo</h1>
+        <p class="subtitle">Learn JavaScript's setTimeout() function with live examples</p>
+        
+        <div class="demo-section">
+            <h3 class="demo-title">📚 What You'll Learn</h3>
+            <p class="demo-description">
+                Understand how setTimeout() works with the event loop, variable scope issues, 
+                and practical implementations. Open your browser's developer console (F12) to see the output!
+            </p>
+        </div>
+        
+        <div class="button-group">
+            <button class="btn" onclick="demonstrateBasicTimeout()">Basic setTimeout</button>
+            <button class="btn" onclick="demonstrateVariableScope()">Variable Scope Demo</button>
+            <button class="btn" onclick="demonstrateDelayedActions()">Delayed Actions</button>
+            <button class="btn" onclick="clearAllTimeouts()">Clear All Timeouts</button>
+        </div>
+        
+        <div class="console-output" id="consoleOutput">
+            Console output will appear here... (Also check browser console F12)
+        </div>
+        
+        <div class="status" id="statusMessage">
+            Ready to explore setTimeout()! Click any button to start.
+        </div>
+        
+        <div class="demo-section">
+            <h3 class="demo-title">🚀 Auto Navigation</h3>
+            <p class="demo-description">
+                This page will automatically navigate to the About page in <span id="countdown" class="pulsing">5</span> seconds.
+                <br><button class="btn" onclick="cancelNavigation()" style="margin-top: 10px;">Cancel Auto-Navigation</button>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Console output display
+        const consoleOutput = document.getElementById('consoleOutput');
+        const statusMessage = document.getElementById('statusMessage');
+        let outputLines = [];
+        
+        function addToConsole(message) {
+            console.log(message);
+            outputLines.push(`> ${message}`);
+            if (outputLines.length > 10) outputLines.shift();
+            consoleOutput.innerHTML = outputLines.join('<br>');
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+        
+        function updateStatus(message, className = '') {
+            statusMessage.textContent = message;
+            statusMessage.className = `status ${className}`;
+        }
+        
+        // Demo functions
+        function demonstrateBasicTimeout() {
+            addToConsole("=== Basic setTimeout Demo ===");
+            addToConsole("Start");
+            
+            setTimeout(() => {
+                addToConsole("Timeout after 500ms");
+            }, 500);
+            
+            setTimeout(() => {
+                addToConsole("Timeout after 0ms (but still async)");
+            }, 0);
+            
+            addToConsole("End");
+            updateStatus("Running basic setTimeout demo...", "loading");
+            
+            setTimeout(() => {
+                updateStatus("Basic demo completed! Check console output.", "");
+            }, 1000);
+        }
+        
+        function demonstrateVariableScope() {
+            addToConsole("=== Variable Scope Demo ===");
+            
+            // Problem with var
+            addToConsole("Problem with var:");
+            for (var i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    addToConsole(`var i: ${i}`);
+                }, 100);
+            }
+            
+            // Solution with let
+            setTimeout(() => {
+                addToConsole("Solution with let:");
+                for (let j = 0; j < 3; j++) {
+                    setTimeout(() => {
+                        addToConsole(`let j: ${j}`);
+                    }, 100 + j * 50);
+                }
+            }, 500);
+            
+            updateStatus("Demonstrating variable scope issues...", "loading");
+        }
+        
+        function demonstrateDelayedActions() {
+            addToConsole("=== Delayed Actions Demo ===");
+            const actions = ['Loading...', 'Processing...', 'Almost done...', 'Complete!'];
+            
+            actions.forEach((action, index) => {
+                setTimeout(() => {
+                    addToConsole(action);
+                }, index * 800);
+            });
+            
+            updateStatus("Running delayed actions sequence...", "loading");
+            
+            setTimeout(() => {
+                updateStatus("Delayed actions demo completed!", "");
+            }, 3500);
+        }
+        
+        // Navigation functionality
+        let navigationTimeout;
+        let countdownInterval;
+        let countdownValue = 5;
+        
+        function startCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            
+            countdownInterval = setInterval(() => {
+                countdownValue--;
+                countdownElement.textContent = countdownValue;
+                
+                if (countdownValue <= 0) {
+                    clearInterval(countdownInterval);
+                    navigateToAbout();
+                }
+            }, 1000);
+            
+            navigationTimeout = setTimeout(() => {
+                navigateToAbout();
+            }, 5000);
+        }
+        
+        function navigateToAbout() {
+            updateStatus("Navigating to About page...", "countdown");
+            addToConsole("Redirecting to about.html...");
+            
+            setTimeout(() => {
+                window.location.href = 'about.html';
+            }, 3000);
+        }
+        
+        function cancelNavigation() {
+            if (navigationTimeout) {
+                clearTimeout(navigationTimeout);
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').textContent = 'Cancelled';
+                updateStatus("Auto-navigation cancelled.", "");
+                addToConsole("Auto-navigation cancelled by user");
+            }
+        }
+        
+        // Storage for timeout management
+        const activeTimeouts = [];
+        
+        function addManagedTimeout(callback, delay) {
+            const timeoutId = setTimeout(() => {
+                callback();
+                // Remove from active timeouts when completed
+                const index = activeTimeouts.indexOf(timeoutId);
+                if (index > -1) activeTimeouts.splice(index, 1);
+            }, delay);
+            
+            activeTimeouts.push(timeoutId);
+            return timeoutId;
+        }
+        
+        function clearAllTimeouts() {
+            activeTimeouts.forEach(clearTimeout);
+            activeTimeouts.length = 0;
+            clearTimeout(navigationTimeout);
+            clearInterval(countdownInterval);
+            addToConsole("All timeouts cleared!");
+            updateStatus("All timeouts have been cleared.", "");
+        }
+        
+        // Initialize
+        window.addEventListener('load', () => {
+            addToConsole("Page loaded! setTimeout() demo ready.");
+            startCountdown();
+        });
+        
+        // Welcome message
+        setTimeout(() => {
+            addToConsole("Welcome to the setTimeout() interactive demo!");
+        }, 1000);
+    </script>
+</body>
+</html>

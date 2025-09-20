@@ -1,0 +1,79 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  width: 800px;
+  min-height: 400px;
+  /* border: 2px solid black; */
+  box-sizing: 2px 2px 4px 4px rgb(156, 155, 155);
+  padding: 70px;
+  text-align: center;
+  padding: 25px;
+}
+.container h1 {
+  font-size: 40px;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+}
+.container p {
+  text-align: start;
+  font-size: 22px;
+  font-family: sans-serif;
+  line-height: 1.25;
+}
+.container button {
+  padding: 10px 40px;
+  background-color: #242424;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+}
+
+.conatiner.light {
+  background-color: white;
+  color: black;
+  box-shadow: 0px 0px 4px 2px rgb(156, 155, 155);
+}
+
+.conatiner.dark {
+  background-color: white;
+  color: black;
+  box-shadow: 0px 0px 4px 2px rgb(156, 155, 155);
+}
+
+button.dark {
+  background-color: white;
+  color: #242424;
+}
+
+button.light {
+  background-color: #242424;
+  color: white;
+}
+/*Default Dark and Light*/
+.light {
+  background-color: #fff;
+  color: #242424;
+}
+.dark {
+  background-color: #242424;
+  color: #fff;
+}
+
+.container.gradient {
+  background-color: #fff;
+  background: linear-gradient(270deg, 255,000,255);
+}
