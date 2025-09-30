@@ -69,7 +69,9 @@ Why use NPM.
 10. **dependencies** : Production packages required for your application to run properly in live environment.
 11. **devDependencies** : Development only package needed for building, testing, or developing but not required in production environments.
 
-### why version having 3 line **\_**.**\_**.**\_**;
+### Version range specifires
+
+#### why version having 3 line **\_**.**\_**.**\_**;
 
 version: "**1\_**.**2\_**.**3\_**";
 1: Major ---> breaking changes that are not backward compatible.
@@ -80,9 +82,11 @@ version: "**1\_**.**2\_**.**3\_**";
 
 **_Backward compatible_** : This is a newer version
 
+
 - ***"6.0.0"***  :  this is locked version.
-- ***"^6.0.0"*** :
-- ***"~6.0.0"*** :
+- ***"^6.0.0"*** : In this case if we use the latest minor and patch version then we use then it will auto update.
+- ***"~6.0.0"*** : If we use updated version of patch then it will auto update.
+- ***"*6.0.0"***  :  Its autoupdate the all three version
 
 
 # Day - 2
@@ -110,7 +114,11 @@ version: "**1\_**.**2\_**.**3\_**";
 **Q. What is the difference between `package-lock.json` and `.package-lock.json`**
 
 **4.** dependencies
--
+- These are packages that your application needs to run in production. They are essential for your app to function correctly when deployed.
+- Installed when someone runs `npm install` in your project.
+- Include when your package is installed as a dependency in another project.
+- Required for the application to work in production.
+- Typically included libraries, frameworks, and runtime utilities
 
 ****Development****
 - A phase of development and implentation of code
@@ -119,19 +127,30 @@ version: "**1\_**.**2\_**.**3\_**";
 - after development completion then it goes to the use for thr users
 - during this phase we use `npm build` for run the code
 
-
-
-
-
-
-
-
-
 5. devDependencies.
+- These are packages that are only needed during development, testing or building your application, They are not required for the application to run in production
+- Installed during development with `npm install`
+- NOT installed when someone installs your package as a dependency.
+- Can be excluded in production with `npm install --production`
+- Include development tools, testing frameworks, build tools, liners, etc.
+
+
 6. version
 
 ---
 
+
+### What is Babel
+- babel is a javascript compiler (transpller) that transforms modern javascript code into backward-compatiable versions that can run in older browsers and environments.
+- Babel converts newer javascript syntax and features intp equivalent code that works in environments that don't support those modern feature yet.
+- Babel does syntax transformation(newer to older)
+
+### Bindler in javascript
+- In js, a bundler is a build tool that multiple javascript files, midules, andassets from your project and combines them into optimized bundles for production use.
+- `vite` is the fastest bndler.
+- In the development mode
+    - it used the tool `ES build` which convert the `.jsx`, `.tsx`, `.Ts` converts them in `.js` code of latest version.
+    -
 
 
 

@@ -1,6 +1,6 @@
 {
   "name": "rest-api-project",
-  "version": "1.0.0",
+  "version": "^1.0.0",
   "description": "This is real time api project",
   "license": "ISC",
   "author": "Avinash Ranjan",
@@ -12,5 +12,8 @@
   },
   "dependencies": {
     "is-odd": "^3.0.1"
+  },
+  "devDependencies": {
+    "vite": "^7.1.7"
   }
 }
