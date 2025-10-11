@@ -73,6 +73,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 10px;
 }
 
 
@@ -80,3 +81,11 @@ body{
     margin-right: 18px;
     accent-color: black;
 }
+
+
+li.completed .todo-title {
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+

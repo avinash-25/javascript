@@ -1,7 +1,13 @@
 {
-    "todos" : [
-        {"id" : 1, "task": "Go Gym" , "complete":false},
-        {"id" : 2, "task": "Take Batch" , "complete":true},
-        {"id" : 3, "task": "No junk food" , "complete":true}
-    ]
+  "todos": [
+    {
+      "task": "Study More",
+      "id": "058a"
+    },
+    {
+      "id": "6c51",
+      "task": "wash cloth",
+      "complete": false
+    }
+  ]
 }
