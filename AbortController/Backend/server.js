@@ -33,11 +33,11 @@ app.get("/", (req, res) => {
 app.get("/users", (req, res) => {
   setTimeout(() => {
     res.status(200).json(users);
-  }, 5000);
+  }, 2000);
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Your server is running at ${PORT}`);
+  console.log(`Your server is running at http://localhost:${PORT}`);
 });
