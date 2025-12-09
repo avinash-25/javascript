@@ -1,13 +1,16 @@
 {
   "name": "day-37-lazy-loading",
   "version": "1.0.0",
-  "main": "script.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "": "vite"
+    "dev":"vite"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "vite": "^7.1.9"
+  }
 }
