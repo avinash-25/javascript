@@ -1,4 +1,4 @@
-// !document.getElementById
+//^ document.getElementById
 
 // const heading = document.getElementById("title");
 
@@ -7,24 +7,26 @@
 
 // console.log("heading :", heading);
 
-// ! getElementByClassName
+//^  getElementByClassName
 
 
-// const arr = Array.from(document.getElementsByClassName("card"));
-// console.log("arr : ", arr);
 
-// arr.map((element, index, array) => {
-//     element.style.color = "red";
-// })
+// const arr = document.getElementsByClassName("card"); //* It returns HTMLCollection jst like array but not an array.
+const arr = Array.from(document.getElementsByClassName("card")); //* this returns true array
+console.log("arr : ", arr);
+
+arr.map((element, index, array) => {
+    element.style.color = "red";
+})
 
 
-//!  getElementsByTagName
+//^  getElementsByTagName
 
 // const divs = Array.from(document.getElementsByTagName("div"));
 
 // divs.style.color = "blue";
 
-// ! document.querySelector
+//^ document.querySelector
 
 // const heading = document.querySelector("#title");
 
@@ -33,7 +35,7 @@
 // const card = document.querySelector(".container > .c3");
 // console.log(card);
 
-//! document.querySelectorAll()
+//^ document.querySelectorAll()
 
 // - It returns nodelist of the elements.
 
@@ -44,7 +46,7 @@
 //     element.style.color = "blue";
 // })
 
-// ! 1. Difference between HTML collection and HTMl list.
+//^  1. Difference between HTML collection and HTMl list.
 
 
 // const cardHtmlCollection = document.getElementsByClassName("card");
@@ -56,5 +58,3 @@
 
 // console.log(cardHtmlCollection);
 // console.log(cardNodeList);
-
-//! 
