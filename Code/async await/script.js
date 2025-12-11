@@ -21,7 +21,7 @@ async function getData() {
     const v2 = await p2; // 5 second + 5 Second
     console.log("v2:", v2);
 }
-
+ 
 console.log("start")
 getData();
 console.log("end");
