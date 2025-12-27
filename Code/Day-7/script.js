@@ -2,30 +2,31 @@
 * Example -1
 */
 
+/*
+var a = 1;
+let b = 2;
+const c = 3;
 
-// var a = 1;
-// let b = 2;
-// const c = 3;
+{
+^    console.log("Inside block");
+    var a = 10;
+    let b = 20;
+    const c = 30;
+    d = 40;
 
-// {
-//     console.log("Inside block");
-//     var a = 10;
-//     let b = 20;
-//     const c = 30;
-//     d = 40;
+    console.log("a = ",a); // 10
+    console.log("b = ",b); // 20
+    console.log("c = ",c); // 30
+    console.log("d = ",d); // 40
+}
 
-//     console.log("a = ",a);
-//     console.log("b = ",b);
-//     console.log("c = ",c);
-//     console.log("d = ",d);
-// }
+^    console.log("Outside block");
 
-//     console.log("Outside block");
-
-//     console.log("a = ",a);
-//     console.log("b = ",b);
-//     console.log("c = ",c);
-//     console.log("d = ",d);
+    console.log("a = ",a); // 10
+    console.log("b = ",b); // 2
+    console.log("c = ",c); // 3
+    console.log("d = ",d); // 40
+ */   
 
 /**
 * Example -2
@@ -93,6 +94,6 @@
 
 
 
-console.log("a : ",a);
+// console.log("a : ",a);
 
-let a = 10;
+// let a = 10;

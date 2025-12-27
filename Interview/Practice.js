@@ -72,6 +72,43 @@ A named function expression makes the name available only inside the function bo
 // obj.fun();
 // c();
 
-let arr = ['avinash', 'abc'];
-let ans = arr.includes('abc',1);
-console.log(ans);
+// let arr = ['avinash', 'abc'];
+// let ans = arr.includes('abc',1);
+// console.log(ans);
+
+
+
+
+
+// var a = 10;
+// let a = 30;
+// console.log(a);
+
+// function parent() {
+//     console.log("I am parent function");
+//     const locker = "10cr"; // This variable will be preserved in closure 
+//         const child = () => {
+//         console.log("I am child function");
+//         console.log("locker : ",locker); // Accessing parent's variable through closure
+//         };
+//   return child;
+//  }
+
+// const x = parent();
+// x(); // Logs the child functionx();
+
+
+let name = {
+    firstName: "Avinash",
+    lastName: "Ranjan",
+    printFullName: function () {
+        console.log(this.firstName, " ", this.lastName);
+    }
+}
+
+name.printFullName();
+
+let name2 = {
+    firstName: "Sachin",
+    lastName: "Tendulkar"
+}

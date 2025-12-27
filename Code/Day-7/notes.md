@@ -61,24 +61,50 @@ let a = 10;
 - Variable declared with var, let, and const keyword support hoisting.
 
 
-## Temporal Dead Zone(TDZ)
+## What is Temporal Dead Zone?
 
 - It is the time frame between variable declaration and variable initialization. In this time frame we can not access a variable.
-- Variable declared with let and const belongs to temporal dead zone(TDZ).
+- Variable declared with `let` and `const` belongs to temporal dead zone (TDZ).
 - If we access value of that variable before actual value to be initialized this phase is called TDZ.
-  
 
+---
 
-                        Variable Phase                      Execution Phase.
-1. var              1. Memory create.               1. Actual value initialized during variable phase.
-                    2. Store undefined(Value)       
+## Variable Phases and Behavior
 
-2. let              1. Memory create.               1. Actual value initialized during Execution phase.
-                    2. Store undefined(Value)       
+### Variable Phase vs Execution Phase
 
-3. const            1. Memory create.               1. Actual value initialized during Execution phase.
-                    2. Store undefined(Value)       
+| Declaration Type | Variable Phase                                 | Execution Phase                                    |
+| ---------------- | ---------------------------------------------- | -------------------------------------------------- |
+| **`var`**        | 1. Memory create<br>2. Store undefined (Value) | 1. Actual value initialized during variable phase  |
+| **`let`**        | 1. Memory create<br>2. Store undefined (Value) | 1. Actual value initialized during Execution phase |
+| **`const`**      | 1. Memory create                               | 1. Actual value initialized during Execution phase |
 
+---
 
-- at the time of variable phase they create the memory and value will be empty.
-- 
+## Detailed Explanation
+
+### 1. `var` Declaration
+- **Variable Phase:**
+  - Memory is created
+  - Value is stored as `undefined`
+- **Execution Phase:**
+  - Actual value is initialized during variable phase
+  - Can be accessed before initialization (returns `undefined`)
+
+### 2. `let` Declaration
+- **Variable Phase:**
+  - Memory is created
+  - Value is stored as `undefined`
+- **Execution Phase:**
+  - Actual value is initialized during execution phase
+  - Cannot be accessed before initialization (throws `ReferenceError`)
+  - Subject to TDZ
+
+### 3. `const` Declaration
+- **Variable Phase:**
+  - Memory is created
+- **Execution Phase:**
+  - Actual value is initialized during execution phase
+  - Cannot be accessed before initialization (throws `ReferenceError`)
+  - Subject to TDZ
+  - Must be initialized at declaration
