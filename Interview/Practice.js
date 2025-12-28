@@ -1,3 +1,42 @@
+console.log("I am Avinash, ", " My Favorite hobby is watching geopolitics news..!!");
+
+function print(name) {
+    console.log(name)
+}
+
+print("Avinash");
+
+let newDate = new Date();
+
+console.log(newDate.getFullYear()) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // var a = "42";
 // var b = 42;
 
@@ -98,17 +137,17 @@ A named function expression makes the name available only inside the function bo
 // x(); // Logs the child functionx();
 
 
-let name = {
-    firstName: "Avinash",
-    lastName: "Ranjan",
-    printFullName: function () {
-        console.log(this.firstName, " ", this.lastName);
-    }
-}
+// let name = {
+//     firstName: "Avinash",
+//     lastName: "Ranjan",
+//     printFullName: function () {
+//         console.log(this.firstName, " ", this.lastName);
+//     }
+// }
 
-name.printFullName();
+// name.printFullName();
 
-let name2 = {
-    firstName: "Sachin",
-    lastName: "Tendulkar"
-}
+// let name2 = {
+//     firstName: "Sachin",
+//     lastName: "Tendulkar"
+// }
