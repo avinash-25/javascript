@@ -18,7 +18,8 @@
 // }
 
 //! Third Way
-// todo AddEventListener()
+
+//& addEventListener()
 
 // const button = document.querySelector("button");
 

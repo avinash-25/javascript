@@ -1,3 +1,5 @@
+//* Example 1
+
 // const arr = [1,2,3,4,5];
 
 // const output = [];
@@ -26,7 +28,7 @@
 // console.log(x);
 
 
-//example 2
+//* example 2
 
 
 // const arr = [1,2,3,4,5];
@@ -45,7 +47,7 @@
 
 
 
-// Example 3
+//* Example 3
 
 // Here map return undefined after index 2 instead of stop working.
 // const arr = [1,2,3,4,5];
@@ -61,9 +63,9 @@
 
 
 
-// filter
+//& filter
 
-//Example 1
+//* Example 1
 
 
 // here it only returns whatever fullfil  the condition.
@@ -84,9 +86,9 @@
 
 
 
-// ! reduce
+//& reduce
 
-// ! example 1
+//* example 1
 
 // const arr = [1,2,3,4,5];
 
@@ -108,7 +110,7 @@
 
 
 
-// ! example 2
+//*  example 2
 
 
 // const arr = [1,2,3,4,5];
@@ -130,7 +132,7 @@
 
 // console.log("x = ",x);
 
-// ! reduceRight()
+//&  reduceRight()
 
 const arr = [1,2,3,4,5];
 
