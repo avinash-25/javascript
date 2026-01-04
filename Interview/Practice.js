@@ -1,16 +1,36 @@
-console.log("I am Avinash, ", " My Favorite hobby is watching geopolitics news..!!");
+// console.log("I am Avinash, ", " My Favorite hobby is watching geopolitics news..!!");
 
-function print(name) {
-    console.log(name)
-}
+// function print(name) {
+//     console.log(name)
+// }
 
-print("Avinash");
+// print("Avinash");
 
-let newDate = new Date();
+// let newDate = new Date();
 
-console.log(newDate.getFullYear()) 
+// console.log(newDate.getFullYear()) 
 
 
+
+//& Splice and Slice
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+
+console.log("Before Splice : ", arr);
+
+let sp = arr.splice(3);
+
+console.log("Sp : ", sp);
+console.log("Arr : ", arr);
+
+let arr1 = [1, 2, 3, 4, 5, 6];
+
+console.log("Before Slice : ", arr1);
+
+let sl = arr1.slice(1, 4);
+
+console.log("sl : ", sl);
+console.log("Orignal Array : ", arr1);
 
 
 
