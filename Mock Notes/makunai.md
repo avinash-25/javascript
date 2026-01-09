@@ -1,5 +1,105 @@
 # MERN Stack Interview Questions & Answers
 
+## Recently Asked MERN Interview Questions
+
+### Variable Declarations (var, let, const)
+
+**What is the difference between var, let, and const in JavaScript?**
+
+**Can you reassign or redeclare variables declared with var, let, and const?**
+
+**What is the scope of var, let, and const?**
+
+**What is hoisting, and how does it differ for var, let, and const?**
+
+---
+
+### The `this` Keyword
+
+**What is the value of this in JavaScript in different contexts (global, object method, class)?**
+
+**How do call, apply, and bind work in JavaScript?**
+
+**What is the difference between call, apply, and bind?**
+
+**How can you change the context of a function using call, apply, or bind?**
+
+---
+
+### Event Loop & Asynchronous JavaScript
+
+**What is the JavaScript event loop?**
+
+**How does the event loop handle synchronous and asynchronous code?**
+
+**What is the call stack, task queue, and microtask queue?**
+
+**What is the difference between synchronous and asynchronous JavaScript?**
+
+**How does async code behave differently from sync code?**
+
+---
+
+### Array Methods
+
+**What is the difference between map, filter, and reduce?**
+
+**How do map and forEach differ?**
+
+**How do map and filter differ?**
+
+**When should you use map, filter, or reduce?**
+
+---
+
+### Redux
+
+**What is Redux and why is it used?**
+
+**Explain the Redux flow with actions, reducers, store, and dispatch.**
+
+**What are the core principles of Redux?**
+
+---
+
+### Core JavaScript Concepts
+
+**What is Object-Oriented Programming in JavaScript?**
+
+**What is a callback in JavaScript?**
+
+**What is a Promise and how does it work?**
+
+**What is async/await and how does it simplify asynchronous code?**
+
+**What is the difference between callbacks, promises, and async/await?**
+
+---
+
+### Functions
+
+**What are the different types of functions in JavaScript?**
+
+**What is the difference between named functions and arrow functions?**
+
+**How does this behave differently in arrow functions compared to regular functions?**
+
+---
+
+### React Hooks
+
+**What is difference between useEffect and UseLayoutEffect?**
+
+---
+
+### Additional Topics
+
+**Git, Github, Create Branch aur Polyfills...**
+
+---
+
+
+
 ## Table of Contents
 1. [var, let, and const](#var-let-const)
 2. [Hoisting](#hoisting)
