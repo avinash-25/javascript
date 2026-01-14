@@ -11,12 +11,13 @@
 // })
 
 
-// const x = users.map
+// // const x = users.map
 
 // async function getData() {
 //     const url = await fetch("https://api.github.com/users/avinash-25");
 //     // console.log(url);
 //     let data = await url.json();
+//     console.log(data)
 //     return data;
 // }
 
@@ -39,10 +40,7 @@ button.addEventListener("click", async () => {
 
     const x = users.map(element => {
         console.log(element)
-        const {
-            login,
-            avatar_url
-        } = element;
+        const { login, avatar_url } = element;
         const card = `<div class="card">
                                 <div class="profile">
                                     <img src=${avatar_url} alt="">
@@ -50,9 +48,9 @@ button.addEventListener("click", async () => {
                                 <div class="info">
                                     <h2>${login}</h2>
                                 </div>
-                            </div>`;
-        return card;
-    }).join("")
+                            </div>`
+        return card
+    }).join("");
 
     const div = document.querySelector(".container");
 
